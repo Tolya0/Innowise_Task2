@@ -11,9 +11,6 @@ public class Task2SortSentencesByLetterCount implements TextTask<List<TextCompon
     private final char targetLetter;
 
     public Task2SortSentencesByLetterCount(SortService sortService, char targetLetter) {
-        if (sortService == null) {
-            throw new IllegalArgumentException();
-        }
         this.sortService = sortService;
         this.targetLetter = targetLetter;
     }

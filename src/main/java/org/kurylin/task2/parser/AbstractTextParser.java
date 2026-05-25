@@ -8,9 +8,6 @@ public abstract class AbstractTextParser {
     protected final TextComponentFactory factory;
 
     protected AbstractTextParser(TextComponentFactory factory) {
-        if (factory == null) {
-            throw new IllegalArgumentException();
-        }
         this.factory = factory;
     }
 

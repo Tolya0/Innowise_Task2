@@ -2,6 +2,7 @@ package org.kurylin.task2.task.impl;
 
 import org.kurylin.task2.entity.TextComponent;
 import org.kurylin.task2.entity.TextComponentType;
+import org.kurylin.task2.entity.TextComposite;
 import org.kurylin.task2.task.TextTask;
 
 import java.util.ArrayList;
@@ -50,13 +51,11 @@ public class Task1MaxSentencesWithSameWords implements TextTask<Integer> {
     private void collectSentences(TextComponent component, List<TextComponent> array) {
         if (component.getType() == TextComponentType.SENTENCE) {
             array.add(component);
-        } else {
-            try {
-                int size = component.size();
-                for (int i = 0; i < size; i++) {
-                    collectSentences(component.get(i), array);
-                }
-            } catch (UnsupportedOperationException e) {
+        } else if (component instanceof TextComposite) {
+            TextComposite composite = (TextComposite) component;
+            int size = composite.size();
+            for (int i = 0; i < size; i++) {
+                collectSentences(composite.get(i), array);
             }
         }
     }
@@ -64,13 +63,11 @@ public class Task1MaxSentencesWithSameWords implements TextTask<Integer> {
     private void collectWords(TextComponent component, List<TextComponent> array) {
         if (component.getType() == TextComponentType.WORD) {
             array.add(component);
-        } else {
-            try {
-                int size = component.size();
-                for (int i = 0; i < size; i++) {
-                    collectWords(component.get(i), array);
-                }
-            } catch (UnsupportedOperationException e) {
+        } else if (component instanceof TextComposite) {
+            TextComposite composite = (TextComposite) component;
+            int size = composite.size();
+            for (int i = 0; i < size; i++) {
+                collectWords(composite.get(i), array);
             }
         }
     }

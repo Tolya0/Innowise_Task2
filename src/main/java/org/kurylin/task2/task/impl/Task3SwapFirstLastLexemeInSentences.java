@@ -36,13 +36,11 @@ public class Task3SwapFirstLastLexemeInSentences implements TextTask<Void> {
     private void collectSentences(TextComponent component, List<TextComponent> array) {
         if (component.getType() == TextComponentType.SENTENCE) {
             array.add(component);
-        } else {
-            try {
-                int size = component.size();
-                for (int i = 0; i < size; i++) {
-                    collectSentences(component.get(i), array);
-                }
-            } catch (UnsupportedOperationException e) {
+        } else if (component instanceof TextComposite) {
+            TextComposite composite = (TextComposite) component;
+            int size = composite.size();
+            for (int i = 0; i < size; i++) {
+                collectSentences(composite.get(i), array);
             }
         }
     }

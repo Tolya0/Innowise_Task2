@@ -12,17 +12,11 @@ public class TextComposite extends TextComponent {
 
     @Override
     public void add(TextComponent component) {
-        if (component == null) {
-            throw new IllegalArgumentException();
-        }
         components.add(component);
     }
 
     @Override
     public void remove(TextComponent component) {
-        if (component == null) {
-            throw new IllegalArgumentException();
-        }
         components.remove(component);
     }
 
@@ -33,9 +27,6 @@ public class TextComposite extends TextComponent {
 
     @Override
     public void set(int index, TextComponent component) {
-        if (component == null) {
-            throw new IllegalArgumentException();
-        }
         components.set(index, component);
     }
 

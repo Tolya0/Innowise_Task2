@@ -4,9 +4,6 @@ public abstract class TextComponent {
     private final TextComponentType type;
 
     protected TextComponent(TextComponentType type) {
-        if (type == null) {
-            throw new IllegalArgumentException();
-        }
         this.type = type;
     }
 

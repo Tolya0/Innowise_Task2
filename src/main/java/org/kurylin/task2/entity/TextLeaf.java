@@ -14,27 +14,24 @@ public class TextLeaf extends TextComponent {
 
     @Override
     public void add(TextComponent component) {
-        throw new UnsupportedOperationException();
     }
 
     @Override
     public void remove(TextComponent component) {
-        throw new UnsupportedOperationException();
     }
 
     @Override
     public TextComponent get(int index) {
-        throw new UnsupportedOperationException();
+        return null;
     }
 
     @Override
     public void set(int index, TextComponent component) {
-        throw new UnsupportedOperationException();
     }
 
     @Override
     public int size() {
-        throw new UnsupportedOperationException();
+        return 0;
     }
 
     @Override

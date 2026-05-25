@@ -2,6 +2,7 @@ package org.kurylin.task2.service.impl;
 
 import org.kurylin.task2.entity.TextComponent;
 import org.kurylin.task2.entity.TextComponentType;
+import org.kurylin.task2.entity.TextComposite;
 import org.kurylin.task2.service.SortService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,13 +46,11 @@ public class SortServiceImpl implements SortService {
         }
         if (component.getType() == TextComponentType.SENTENCE) {
             array.add(component);
-        } else {
-            try {
-                int size = component.size();
-                for (int i = 0; i < size; i++) {
-                    collectSentences(component.get(i), array);
-                }
-            } catch (UnsupportedOperationException e) {
+        } else if (component instanceof TextComposite) {
+            TextComposite composite = (TextComposite) component;
+            int size = composite.size();
+            for (int i = 0; i < size; i++) {
+                collectSentences(composite.get(i), array);
             }
         }
     }

@@ -2,6 +2,7 @@ package org.kurylin.task2.service.impl;
 
 import org.kurylin.task2.entity.TextComponent;
 import org.kurylin.task2.entity.TextComponentType;
+import org.kurylin.task2.entity.TextComposite;
 import org.kurylin.task2.entity.TextLeaf;
 import org.kurylin.task2.service.TextCountService;
 
@@ -43,13 +44,11 @@ public class TextCountServiceImpl implements TextCountService {
     private void collectSymbolsRecursive(TextComponent component, List<TextLeaf> leaves) {
         if (component instanceof TextLeaf) {
             leaves.add((TextLeaf) component);
-        } else {
-            try {
-                int size = component.size();
-                for (int i = 0; i < size; i++) {
-                    collectSymbolsRecursive(component.get(i), leaves);
-                }
-            } catch (UnsupportedOperationException e) {
+        } else if (component instanceof TextComposite) {
+            TextComposite composite = (TextComposite) component;
+            int size = composite.size();
+            for (int i = 0; i < size; i++) {
+                collectSymbolsRecursive(composite.get(i), leaves);
             }
         }
     }
