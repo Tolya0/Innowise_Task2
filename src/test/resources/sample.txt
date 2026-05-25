@@ -1,0 +1,2 @@
+    It has been a beautiful day. Do you agree? Yes, absolutely!
+    Hello, world! Java is a programming language. Java was released in 1995.
